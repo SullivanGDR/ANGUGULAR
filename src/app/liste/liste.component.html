@@ -1,0 +1,43 @@
+<h3>Vos articles :</h3>
+
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()" class="p-4 border rounded bg-light shadow-sm">
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Nom de l'article</label>
+    <input formControlName="name" type="text" class="form-control" id="name" placeholder="Entrez le nom de l'article">
+  </div>
+
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Quantité</label>
+    <input formControlName="quantity" type="number" class="form-control" id="quantity" placeholder="Entrez la quantité">
+  </div>
+
+  <div class="mb-3">
+    <label for="price" class="form-label">Prix</label>
+    <input formControlName="price" type="number" class="form-control" id="price" placeholder="Entrez le prix">
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">Ajouter l'article</button>
+</form>
+
+
+<div class="bg-white m-2 p-3 shadow-sm rounded">
+  <ul class="list-group">
+    <li *ngFor="let article of articles; let i = index" class="list-group-item d-flex justify-content-between align-items-center p-3">
+      <div class="d-flex align-items-center">
+        <!-- Bouton supprimer avec icône -->
+        <button (click)="supprimerArticle(articles[i])" class="btn btn-danger btn-sm me-3">
+          <i class="bi-dash-circle"></i>
+        </button>
+        <!-- Informations de l'article -->
+        <div>
+          <h5 class="mb-0">{{ article.name }}</h5>
+          <small class="text-muted">Quantité : {{ article.quantity }}</small>
+        </div>
+      </div>
+      <!-- Prix de l'article à droite -->
+      <span class="badge bg-success rounded-pill">{{ article.price }} €</span>
+    </li>
+  </ul>
+</div>
+

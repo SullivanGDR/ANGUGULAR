@@ -1,0 +1,19 @@
+<h3>Votre ticket de caisse :</h3>
+
+<div class="bg-white m-2 p-3 shadow-sm rounded">
+  <ul class="list-group">
+    <li *ngFor="let article of articles; let i = index" class="list-group-item d-flex justify-content-between align-items-center p-3">
+      <div class="d-flex flex-column">
+        <!-- Nom de l'article -->
+        <h5 class="mb-1">{{ article.name }}</h5>
+        <!-- Quantité et prix unitaire -->
+        <small class="text-muted">Quantité : {{ article.quantity }} | Prix unitaire : {{ article.price }} €</small>
+      </div>
+      <!-- Prix total -->
+      <span class="badge bg-success rounded-pill">
+        Total : {{ article.quantity * article.price }} €
+      </span>
+    </li>
+  </ul>
+</div>
+<p>Total de votre liste : {{getTotal()}}</p>
